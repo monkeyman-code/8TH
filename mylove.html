@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Baby</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffe6f0; /* Soft pink initial background */
+            font-family: 'Poppins', sans-serif;
+            transition: background 1.5s ease-in-out;
+            overflow: hidden;
+        }
+
+        /* --- THE PINK BUTTON --- */
+        #start-btn {
+            background-color: #ff69b4; /* Hot Pink */
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(255, 105, 180, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            z-index: 100;
+        }
+
+        #start-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(255, 105, 180, 0.6);
+        }
+
+        /* --- THE HIDDEN LETTER --- */
+        #letter-container {
+            display: none;
+            opacity: 0;
+            text-align: center;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            background: rgba(255, 255, 255, 0.85); /* Semi-transparent white box */
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: opacity 2s ease;
+            z-index: 50;
+        }
+
+        #letter-container h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #d81b60;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            margin-top: 0;
+        }
+
+        #letter-container p {
+            color: #333;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 600px) {
+            #letter-container h1 { font-size: 2.2rem; }
+            #letter-container p { font-size: 1rem; }
+            #letter-container { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MUSIC (Ensure filename matches exactly) -->
+    <audio id="bg-music" loop>
+        <source src="inlovewithu.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- THE TRIGGER BUTTON -->
+    <button id="start-btn" onclick="revealSurprise()">Click Me Baby 💕</button>
+
+    <!-- THE REVEALED LETTER -->
+    <div id="letter-container">
+        <h1>Happy 8th Monthsary!</h1>
+        <p>
+            HAPPYYYY 8TH MONTHSARYYYYYY OMGGGG almost a year na tayooooo! I love you so much baby.
+            <br><br>
+            Anyways, alam mo ba every time you ask if you look pretty, naiisip ko lagi, <i>"Does this lady know that she's so pretty that the word pretty is not enough to describe her beauty?"</i>
+            <br><br>
+            I may not know how to write a song for you like Labi Siffre, but I do know how to code and make you a letter. And like in the song <i>Bless the Telephone</i>, I'm pretty sure I'm very much in love with you.
+        </p>
+    </div>
+
+    <script>
+        function revealSurprise() {
+            // 1. Hide the button
+            const btn = document.getElementById('start-btn');
+            btn.style.display = 'none';
+
+            // 2. Play the music
+            const music = document.getElementById('bg-music');
+            music.volume = 0.7; // Slightly lowered so it's not blasting
+            music.play();
+
+            // 3. Change the background to the GIF
+            document.body.style.background = "url('inlove.gif') no-repeat center center fixed";
+            document.body.style.backgroundSize = "cover";
+
+            // 4. Fade in the letter
+            const letter = document.getElementById('letter-container');
+            letter.style.display = 'block';
+            
+            // A tiny delay before changing opacity to trigger the CSS transition
+            setTimeout(() => {
+                letter.style.opacity = '1';
+            }, 100);
+        }
+    </script>
+</body>
+</html>
